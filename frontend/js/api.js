@@ -1,6 +1,4 @@
-const API_BASE_URL = ["localhost:5050", "127.0.0.1:5050"].includes(
-  window.location.host,
-)
+const API_BASE_URL = window.location.protocol.startsWith("http")
   ? "/api"
   : "http://127.0.0.1:5050/api";
 

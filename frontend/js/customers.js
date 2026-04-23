@@ -2,6 +2,20 @@ const customerForm = document.getElementById("customerForm");
 const customersList = document.getElementById("customersList");
 const customerDetails = document.getElementById("customerDetails");
 
+function getPolicyTypeLabel(policyType) {
+  if (policyType === "car") return "Автомашин";
+  if (policyType === "home") return "Орон сууц";
+  if (policyType === "travel") return "Аялал";
+  return policyType;
+}
+
+function getStatusLabel(status) {
+  if (status === "active") return "Идэвхтэй";
+  if (status === "cancelled") return "Цуцлагдсан";
+  if (status === "expired") return "Хугацаа дууссан";
+  return status;
+}
+
 async function loadCustomers() {
   try {
     customersList.innerHTML = `<div class="message loading">Даатгуулагчдын мэдээллийг ачааллаж байна...</div>`;
@@ -60,10 +74,10 @@ async function viewCustomerDetails(id) {
                     (policy) => `
                       <tr>
                         <td>${policy.id}</td>
-                        <td>${policy.policy_type}</td>
+                        <td>${getPolicyTypeLabel(policy.policy_type)}</td>
                         <td>${policy.base_amount}</td>
                         <td>${policy.premium}</td>
-                        <td><span class="badge ${policy.status}">${policy.status}</span></td>
+                        <td><span class="badge ${policy.status}">${getStatusLabel(policy.status)}</span></td>
                       </tr>
                     `,
                   )

@@ -12,7 +12,7 @@
         <h1>Даатгуулагчид</h1>
         <nav>
           <a href="./index.html">Нүүр</a>
-          <a href="./customers.html">Даатгуулагчид</a>
+          <a href="./customers.html" aria-current="page">Даатгуулагчид</a>
           <a href="./policies.html">Гэрээнүүд</a>
         </nav>
       </div>
@@ -21,37 +21,39 @@
     <main class="container">
       <div id="messageBox"></div>
 
-      <div class="card">
-        <h2>Даатгуулагч бүртгэх</h2>
-        <form id="customerForm">
-          <div class="form-row">
-            <label>Нэр</label>
-            <input type="text" id="first_name" required />
-          </div>
-          <div class="form-row">
-            <label>Овог</label>
-            <input type="text" id="last_name" required />
-          </div>
-          <div class="form-row">
-            <label>Регистрийн дугаар</label>
-            <input type="text" id="register_number" required />
-          </div>
-          <div class="form-row">
-            <label>Төрсөн огноо</label>
-            <input type="date" id="birth_date" required />
-          </div>
-          <div class="form-row">
-            <label>Утасны дугаар</label>
-            <input type="text" id="phone" required />
-          </div>
-          <button type="submit">Бүртгэх</button>
-        </form>
-      </div>
+      <section class="page-grid">
+        <div class="card">
+          <h2>Даатгуулагч бүртгэх</h2>
+          <form id="customerForm">
+            <div class="form-row">
+              <label>Нэр</label>
+              <input type="text" id="first_name" required />
+            </div>
+            <div class="form-row">
+              <label>Овог</label>
+              <input type="text" id="last_name" required />
+            </div>
+            <div class="form-row">
+              <label>Регистрийн дугаар</label>
+              <input type="text" id="register_number" required />
+            </div>
+            <div class="form-row">
+              <label>Төрсөн огноо</label>
+              <input type="date" id="birth_date" required />
+            </div>
+            <div class="form-row">
+              <label>Утасны дугаар</label>
+              <input type="text" id="phone" required />
+            </div>
+            <button type="submit">Бүртгэх</button>
+          </form>
+        </div>
 
-      <div class="card">
-        <h2>Даатгуулагчдын жагсаалт</h2>
-        <div id="customersList"></div>
-      </div>
+        <div class="card">
+          <h2>Даатгуулагчдын жагсаалт</h2>
+          <div id="customersList"></div>
+        </div>
+      </section>
 
       <div class="card">
         <h2>Даатгуулагчийн дэлгэрэнгүй</h2>
