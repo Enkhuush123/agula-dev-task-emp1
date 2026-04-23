@@ -1,0 +1,49 @@
+{
+  "generated_at": "2026-04-23T08:40:19.878Z",
+  "input_file": "claims.csv",
+  "summary": {
+    "total_claim_count": 500,
+    "approved_claim_count": 280,
+    "approved_percentage": 56
+  },
+  "average_claim_amount_by_policy_type": {
+    "car": 3793729.53,
+    "travel": 1487398.53,
+    "home": 7998853.3
+  },
+  "top_3_months_by_claim_count": [
+    {
+      "month": "2024-04",
+      "claim_count": 30
+    },
+    {
+      "month": "2025-04",
+      "claim_count": 28
+    },
+    {
+      "month": "2025-09",
+      "claim_count": 27
+    }
+  ],
+  "loss_ratio_by_policy_type": {
+    "car": {
+      "approved_claim_amount": 315426850.34,
+      "total_claim_amount": 565265699.93,
+      "loss_ratio_proxy": 0.558
+    },
+    "travel": {
+      "approved_claim_amount": 156294016.58,
+      "total_claim_amount": 270706531.77,
+      "loss_ratio_proxy": 0.5774
+    },
+    "home": {
+      "approved_claim_amount": 748058700.21,
+      "total_claim_amount": 1351806208.34,
+      "loss_ratio_proxy": 0.5534
+    }
+  },
+  "notes": [
+    "loss_ratio_proxy = approved_claim_amount / total_claim_amount",
+    "claims.csv дээр policy amount багана байхгүй тул proxy ratio ашигласан."
+  ]
+}
