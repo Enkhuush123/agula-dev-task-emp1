@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="mn">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Гэрээнүүд</title>
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <h1>Даатгалын гэрээний систем</h1>
+        <nav>
+          <a href="./index.html">Нүүр</a>
+          <a href="./customers.html">Даатгуулагчид</a>
+          <a href="./policies.html">Гэрээнүүд</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container">
+      <div id="messageBox"></div>
+
+      <div class="card">
+        <h2>Шинэ гэрээ үүсгэх</h2>
+        <form id="policyForm">
+          <div class="form-row">
+            <label>Даатгуулагч</label>
+            <select id="customer_id" required>
+              <option value="">Даатгуулагч сонгох</option>
+            </select>
+          </div>
+
+          <div class="form-row">
+            <label>Гэрээний төрөл</label>
+            <select id="policy_type" required>
+              <option value="">Төрөл сонгох</option>
+              <option value="car">Автомашин</option>
+              <option value="home">Орон сууц</option>
+              <option value="travel">Аялал</option>
+            </select>
+          </div>
+
+          <div class="form-row">
+            <label>Даатгалын үнэлгээний дүн</label>
+            <input type="number" id="base_amount" required />
+          </div>
+
+          <div class="form-row">
+            <label>Эхлэх огноо</label>
+            <input type="date" id="start_date" required />
+          </div>
+
+          <div class="form-row">
+            <label>Дуусах огноо</label>
+            <input type="date" id="end_date" required />
+          </div>
+
+          <div class="form-row">
+            <label>Урьдчилсан premium</label>
+            <strong id="premiumPreview">0.00</strong>
+          </div>
+
+          <button type="submit">Гэрээ үүсгэх</button>
+        </form>
+      </div>
+
+      <div class="card">
+        <h2>Гэрээний жагсаалт</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Даатгуулагч ID</th>
+              <th>Төрөл</th>
+              <th>Үндсэн дүн</th>
+              <th>Premium</th>
+              <th>Төлөв</th>
+              <th>Үйлдэл</th>
+            </tr>
+          </thead>
+          <tbody id="policiesTableBody"></tbody>
+        </table>
+      </div>
+    </main>
+
+    <script src="./js/api.js"></script>
+    <script src="./js/policies.js"></script>
+  </body>
+</html>

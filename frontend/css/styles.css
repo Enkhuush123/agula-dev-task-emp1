@@ -1,0 +1,147 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f5f7fb;
+  color: #222;
+}
+
+header {
+  background: #1f3c88;
+  color: white;
+  padding: 20px;
+}
+
+header h1 {
+  margin: 0 0 10px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  margin-right: 15px;
+  font-weight: bold;
+}
+
+.container {
+  width: 90%;
+  max-width: 1100px;
+  margin: 20px auto;
+}
+
+.card {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+h2,
+h3 {
+  margin-top: 0;
+}
+
+.form-row {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 12px;
+}
+
+input,
+select,
+button {
+  padding: 10px;
+  font-size: 14px;
+}
+
+button {
+  background: #1f3c88;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 0.95;
+}
+
+button.cancel-btn {
+  background: #c0392b;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 12px;
+}
+
+table,
+th,
+td {
+  border: 1px solid #ddd;
+}
+
+th,
+td {
+  padding: 10px;
+  text-align: left;
+}
+
+.list-item {
+  padding: 12px;
+  border: 1px solid #ddd;
+  margin-bottom: 8px;
+  border-radius: 6px;
+  cursor: pointer;
+  background: #fafafa;
+}
+
+.list-item:hover {
+  background: #f0f4ff;
+}
+
+.message {
+  padding: 10px;
+  border-radius: 6px;
+  margin-bottom: 12px;
+}
+
+.success {
+  background: #eafaf1;
+  color: #1e8449;
+}
+
+.error {
+  background: #fdecea;
+  color: #c0392b;
+}
+
+.loading {
+  background: #eef4ff;
+  color: #1f3c88;
+}
+
+.badge {
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 999px;
+  color: white;
+  font-size: 12px;
+}
+
+.badge.active {
+  background: #27ae60;
+}
+
+.badge.cancelled {
+  background: #c0392b;
+}
+
+.badge.expired {
+  background: #7f8c8d;
+}
