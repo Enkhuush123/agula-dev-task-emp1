@@ -1,29 +1,48 @@
 const db = require("../config/db");
 
-function create(customer) {
-  const { first_name, last_name, register_number, birth_date, phone } =
-    customer;
+function create(policy) {
+  const {
+    customer_id,
+    policy_type,
+    base_amount,
+    start_date,
+    end_date,
+    premium,
+    status,
+  } = policy;
 
   return new Promise((resolve, reject) => {
     const query = `
-      INSERT INTO customers (first_name, last_name, register_number, birth_date, phone)
-      VALUES (?, ?, ?, ?, ?)
+      INSERT INTO policies (
+        customer_id, policy_type, base_amount, start_date, end_date, premium, status
+      )
+      VALUES (?, ?, ?, ?, ?, ?, ?)
     `;
 
     db.run(
       query,
-      [first_name, last_name, register_number, birth_date, phone],
+      [
+        customer_id,
+        policy_type,
+        base_amount,
+        start_date,
+        end_date,
+        premium,
+        status,
+      ],
       function (err) {
         if (err) {
           reject(err);
         } else {
           resolve({
             id: this.lastID,
-            first_name,
-            last_name,
-            register_number,
-            birth_date,
-            phone,
+            customer_id,
+            policy_type,
+            base_amount,
+            start_date,
+            end_date,
+            premium,
+            status,
           });
         }
       },
@@ -31,9 +50,24 @@ function create(customer) {
   });
 }
 
-function findAll() {
+function findAll(filters = {}) {
   return new Promise((resolve, reject) => {
-    db.all(`SELECT * FROM customers ORDER BY id DESC`, [], (err, rows) => {
+    let query = `SELECT * FROM policies WHERE 1=1`;
+    const params = [];
+
+    if (filters.customer_id) {
+      query += ` AND customer_id = ?`;
+      params.push(filters.customer_id);
+    }
+
+    if (filters.status) {
+      query += ` AND status = ?`;
+      params.push(filters.status);
+    }
+
+    query += ` ORDER BY id DESC`;
+
+    db.all(query, params, (err, rows) => {
       if (err) reject(err);
       else resolve(rows);
     });
@@ -42,21 +76,34 @@ function findAll() {
 
 function findById(id) {
   return new Promise((resolve, reject) => {
-    db.get(`SELECT * FROM customers WHERE id = ?`, [id], (err, row) => {
+    db.get(`SELECT * FROM policies WHERE id = ?`, [id], (err, row) => {
       if (err) reject(err);
       else resolve(row);
     });
   });
 }
 
-function findByRegisterNumber(registerNumber) {
+function findByCustomerId(customerId) {
   return new Promise((resolve, reject) => {
-    db.get(
-      `SELECT * FROM customers WHERE register_number = ?`,
-      [registerNumber],
-      (err, row) => {
+    db.all(
+      `SELECT * FROM policies WHERE customer_id = ? ORDER BY id DESC`,
+      [customerId],
+      (err, rows) => {
         if (err) reject(err);
-        else resolve(row);
+        else resolve(rows);
+      },
+    );
+  });
+}
+
+function updateStatus(id, status) {
+  return new Promise((resolve, reject) => {
+    db.run(
+      `UPDATE policies SET status = ? WHERE id = ?`,
+      [status, id],
+      function (err) {
+        if (err) reject(err);
+        else resolve({ updated: this.changes > 0 });
       },
     );
   });
@@ -66,5 +113,6 @@ module.exports = {
   create,
   findAll,
   findById,
-  findByRegisterNumber,
+  findByCustomerId,
+  updateStatus,
 };

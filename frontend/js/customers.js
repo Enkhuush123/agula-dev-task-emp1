@@ -1,5 +1,3 @@
-const { register } = require("module");
-
 const customerForm = document.getElementById("customerForm");
 const customersList = document.getElementById("customersList");
 const customerDetails = document.getElementById("customerDetails");
@@ -14,13 +12,15 @@ async function loadCustomers() {
       customersList.innerHTML = "<p>Даатгуулагчид олдсонгүй.</p>";
       return;
     }
-    customersList.innerHTML = customers.map(
-      (customer) => `
+    customersList.innerHTML = customers
+      .map(
+        (customer) => `
        <div class="list-item" onclick="viewCustomerDetails(${customer.id})">
             <strong>${customer.first_name} ${customer.last_name}</strong><br />
             Регистрийн дугаар: ${customer.register_number}
           </div> `,
-    );
+      )
+      .join("");
   } catch (error) {
     customersList.innerHTML = `<div class="message error">Даатгуулагчдын мэдээллийг ачааллахад алдаа гарлаа: ${error.message}</div>`;
   }
@@ -78,7 +78,7 @@ async function viewCustomerDetails(id) {
     customerDetails.innerHTML = `<div class="message error">${error.message}</div>`;
   }
 }
-customerForm.addEventListener("sumbit", async (e) => {
+customerForm.addEventListener("submit", async (e) => {
   e.preventDefault();
   const registerNumber = document
     .getElementById("register_number")

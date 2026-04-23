@@ -3,13 +3,16 @@ function validateRegisterNumber(registerNumber) {
 }
 
 function validateCustomerInput(data) {
-  const { firstName, lastName, registerNumber, birth_date, phone } = data;
-  if (!firstName || !lastName || !registerNumber || !birth_date || !phone) {
+  const { first_name, last_name, register_number, birth_date, phone } = data;
+
+  if (!first_name || !last_name || !register_number || !birth_date || !phone) {
     return "Бүх талбаруудыг бөглөнө үү.";
   }
-  if (!validateRegisterNumber(registerNumber)) {
+
+  if (!validateRegisterNumber(register_number)) {
     return "Регистрийн дугаар буруу байна. Жишээ: AB12345678";
   }
+
   return null;
 }
 
